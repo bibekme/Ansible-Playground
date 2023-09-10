@@ -1,0 +1,13 @@
+version: "3"
+services:
+  ubuntu_1:
+    build: .
+    container_name: ubuntu_1
+    ports:
+      - "2222:22"
+
+  ubuntu_2:
+    build: .
+    container_name: ubuntu_2
+    ports:
+      - "2223:22"
