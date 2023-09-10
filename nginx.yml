@@ -1,6 +1,6 @@
 ---
 - name: Setup containers with Nginx
-  hosts: ubuntu-containers
+  hosts: ubuntu_containers
   become: yes
 
   tasks:
