@@ -1,0 +1,15 @@
+---
+- name: Node Destroy
+  hosts: localhost
+  connection: local
+  vars_prompt:
+    - name: vm_name
+      prompt: "Enter the name of the VM to destroy"
+      private: no
+
+  tasks:
+    - name: Delete and purge a VM
+      theko2fi.multipass.multipass_vm:
+        name: "{{ vm_name }}"
+        state: absent
+        purge: true

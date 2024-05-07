@@ -1,0 +1,24 @@
+---
+- name: Node Provision
+  hosts: localhost
+  connection: local
+  vars_prompt:
+    - name: vm_name
+      prompt: "Enter the name of the VM"
+      private: no
+
+  tasks:
+    - name: Create a Multipass VM
+      theko2fi.multipass.multipass_vm:
+        name: "{{ vm_name }}"
+        cpus: 2
+        memory: 2G
+        disk: 8G
+        state: started
+
+    - name: Add the VM to the inventory
+      ansible.builtin.add_host:
+        name: "{{ vm_name }}"
+        ansible_host: "{{ vm_name }}"
+        ansible_connection: theko2fi.multipass.multipass
+        ansible_python_interpreter: "/usr/bin/python3"
